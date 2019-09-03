@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+        <h1>get specific task</h1></br>
+        <h1>
+            <a href="/">Home page</a>
+            <a href="/insert">Insert Task</a></br>
+            <a href="/getAll">List Task</a></br>
+            <a href="/update">Update Task</a></br>
+            <a href="/deleteuser">Delete Task</a></br>
+            <a href="/findTask">find specific Task</a></br>
+        </h1>
+        <table>
+                <tr>
+                    <td>Task ID</td>
+                    <td>Task name</td>
+                    <td>Assign person</td>
+                    <td>Due date</td>
+                    <td>Task status</td>
+                    <td>Task description</td>
+                </tr>
+                <% for (let i=0;i<usersDb.length;i++){ %>
+                    <tr>
+                        <td><%= usersDb[i].Taskid %> </td>
+                        <td> <%= usersDb[i].Task %> </td>
+                        <td><%= usersDb[i].assignPerson %></td>
+                        <td><%= usersDb[i].dueDate %> </td>
+                        <td> <%= usersDb[i].taskStatus %> </td>
+                        <td><%= usersDb[i].taskDescription %></td>
+                    </tr>
+                    <%}%>
+            </table>
+</body>
