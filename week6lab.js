@@ -65,8 +65,8 @@ app.post('/addNewTask', function (req, res) {
     if (userDetails.taskStatus==="Complete" || userDetails.taskStatus==="InProgress"){
         col.insertOne({ Taskid:randomId,Task: userDetails.taskName, assignPerson: userDetails.personName, dueDate: userDetails.dueDate, taskStatus: userDetails.taskStatus , taskDescription:userDetails.description });
     }
-    res.redirect('/insert'); // redirect the client to list users page
-
+    res.redirect('/getAll'); // redirect the client to list users page
+    
 });
 app.post('/updateuserdata', function (req, res) {
     let userDetails = req.body;
@@ -75,16 +75,16 @@ app.post('/updateuserdata', function (req, res) {
     // let filter = { taskName: userDetails.taskName }
     let theUpdate = { $set: { taskStatus: userDetails.taskStatus }};
     db.collection('fit2095dbweek6').updateOne(filter, theUpdate);}
-    res.redirect('/update');// redirect the client to list users page
+    res.redirect('/getAll');// redirect the client to list users page
 })
 app.post('/deleteAll', function (req, res) {
     // let theUpdate = { $gte: 0};
-    db.collection('fit2095dbweek6').deleteMany({Taskid: {$gte: 0}});
-    res.redirect('/deleteAll');// redirect the client to list users page
+    db.collection('fit2095dbweek6').deleteMany({taskStatus: {$eq: "Complete"}});
+    res.redirect('/getAll');// redirect the client to list users page
 })
 app.post('/deleteOne', function (req, res) {
     let userDetails = req.body;
-    let filter = { Taskid: userDetails.taskID };
+    let filter = { Taskid: parseInt(userDetails.taskID) };
     db.collection('fit2095dbweek6').deleteOne(filter);
-    res.redirect('/deleteOne');// redirect the client to list users page
+    res.redirect('/getAll');// redirect the client to list users page
 })

@@ -15,7 +15,7 @@
         <table>
                 <tr>
                     <td>Task ID</td>
-                    <td>Task name</td>
+                    <td>Task Name</td>
                     <td>Assign person</td>
                     <td>Due date</td>
                     <td>Task status</td>
@@ -23,12 +23,12 @@
                 </tr>
                 <% for (let i=0;i<usersDb.length;i++){ %>
                     <tr>
-                        <td><%= usersDb[i].Taskid %> </td>
-                        <td> <%= usersDb[i].Task %> </td>
-                        <td><%= usersDb[i].assignPerson %></td>
-                        <td><%= usersDb[i].dueDate %> </td>
-                        <td> <%= usersDb[i].taskStatus %> </td>
-                        <td><%= usersDb[i].taskDescription %></td>
+                        <td><%= usersDb[i]._id %> </td>
+                        <td><%= usersDb[i].taskName %> </td>
+                        <td> <%= usersDb[i].developer %> </td>
+                        <td><%= usersDb[i].dueDate %></td>
+                        <td><%= usersDb[i].taskStatus %> </td>
+                        <td> <%= usersDb[i].taskDescription %> </td>
                     </tr>
                     <%}%>
             </table>
